@@ -1,7 +1,9 @@
 <?php
 declare(strict_types=1);
 
-
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
 // Below are several code blocks, read them, understand them and try to find whats wrong.
 // Once this exercise is finished, we'll go over the code all together and we can share how we debugged the following problems.
 // Try to fix the code every time and good luck ! (write down how you found out the answer and how you debugged the problem)
@@ -90,7 +92,7 @@ function combineNames($str1 = "", $str2 = "") {
             $param = randomHeroName($i);
         }
     }
-    return implode("  -  ",$params);
+    return implode(" - ",$params);
 }
 function randomHeroName($i)
 {
@@ -105,6 +107,7 @@ echo "Here is the name: " . combineNames();
 
 //added semicolon , changed echo to return in randomhero and combinenames 
 //used debugger and docs on web 
+// $randname changed allso 
 
 new_exercise(7);
 function copyright(int $year) {
@@ -112,7 +115,7 @@ function copyright(int $year) {
 }
 //print the copyright
 echo copyright((int)date('Y'));
-// added echo and  cast int in the code (function)
+// added echo and  cast int in the code (function) or use print_r
 // used debugg and php documentation 
 
 ///
