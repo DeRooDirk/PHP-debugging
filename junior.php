@@ -17,7 +17,9 @@ function new_exercise($x) {
     $block = "<br/><hr/><br/><br/>Exercise $x starts here:<br/>";
     echo $block;
 }
-
+//How i fixed this 
+// Added *x Parameter , SX did not exist
+// simple inspection of the code to fix this 
 
 new_exercise(2);
 // === Exercise 2 ===
@@ -28,7 +30,8 @@ $week = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "su
 $monday = $week[0];
 
 echo $monday;
-
+//Change the index, because the exercise asked to print  monday
+// simple inspection.
 
 new_exercise(3);
 // === Exercise 3 ===
@@ -37,7 +40,8 @@ new_exercise(3);
 $str = "Debugged ! Also very fun";
 echo substr($str, 0, 10);
 
-
+//Changed the quotes around the string
+// simple inspection.
 
 
 new_exercise(4);
@@ -52,7 +56,8 @@ foreach($week as &$day)  {
 
 print_r($week);
 
-
+// added the & (pointer indicator)
+// simple inspection, checking the documentation.
 
 
 new_exercise(5);
@@ -66,9 +71,10 @@ for ($i = 1; $i<= 26; $i++) {
     array_push($arr, $letter);
     $letter++;
 }
-
 print_r($arr); // Array ([0] => a, [1] => b, [2] => c, ...) a-z alphabetical array
-
+/*---Solution ---*/
+//  $variabel removed from loop
+//changed the loop controller  $i// used docs and debugger 
 
 new_exercise(6);
 // === Final exercise ===
@@ -97,14 +103,17 @@ function randomHeroName($i)
 }
 echo "Here is the name: " . combineNames();
 
+//added semicolon , changed echo to return in randomhero and combinenames 
+//used debugger and docs on web 
 
-/*
 new_exercise(7);
 function copyright(int $year) {
     return "&copy; $year BeCode";
 }
 //print the copyright
-copyright(date('Y'));
+echo copyright((int)date('Y'));
+// added echo and  cast int in the code (function)
+// used debugg and php documentation 
 
 ///
 ///
