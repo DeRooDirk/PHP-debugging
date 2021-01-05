@@ -13,11 +13,11 @@ declare(strict_types=1);
 // sometimes, even your IDE can tell you what's wrong
 echo "Exercise 1 starts here:";
 
-function new_exercise() {
-    $block = "<br/><hr/><br/><br/>Exercise 1 starts here:<br/>";
+function new_exercise($x) {
+    $block = "<br/><hr/><br/><br/>Exercise $x starts here:<br/>";
     echo $block;
 }
-new_exercise();
+
 
 new_exercise(2);
 // === Exercise 2 ===
@@ -25,16 +25,16 @@ new_exercise(2);
 // We then try to print the first day which is monday, execute the code and see what happens.
 
 $week = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
-$monday = $week[1];
+$monday = $week[0];
 
 echo $monday;
 
-/*
+
 new_exercise(3);
 // === Exercise 3 ===
 // This should echo ` "Debugged !" `, fix it so that that is the literal text echo'ed
 
-$str = “Debugged ! Also very fun”;
+$str = "Debugged ! Also very fun";
 echo substr($str, 0, 10);
 
 
@@ -46,7 +46,7 @@ new_exercise(4);
 // The print_r($week) should give:  Array ( [0] => mon [1] => tues [2] => wednes [3] => thurs [4] => fri [5] => satur [6] => sun )
 // Look up whats going wrong with this code, and then fix it, with ONE CHARACTER!
 
-foreach($week as $day) {
+foreach($week as &$day)  {
     $day = substr($day, 0, -3);
 }
 
@@ -61,8 +61,10 @@ new_exercise(5);
 // Fix the code so the for loop only pushes a-z in the array
 
 $arr = [];
-for ($letter = 'a'; $letter <= 'z'; $letter++) {
+$letter='a';
+for ($i = 1; $i<= 26; $i++) {
     array_push($arr, $letter);
+    $letter++;
 }
 
 print_r($arr); // Array ([0] => a, [1] => b, [2] => c, ...) a-z alphabetical array
@@ -75,39 +77,28 @@ new_exercise(6);
 // $name variables are randomly combined as seen in the code, fix all the bugs whilst keeping the functionality!
 // Examples: captain strange, ant widow, iron man, ...
 $arr = [];
-
-
 function combineNames($str1 = "", $str2 = "") {
     $params = [$str1, $str2];
-    foreach($params as $param) {
+    foreach($params as $i => &$param) {
         if ($param == "") {
-            $param = randomHeroName();
+            $param = randomHeroName($i);
         }
     }
-    echo implode($params, " - ");
+    return implode("  -  ",$params);
 }
-
-
-function randomGenerate($arr, $amount) {
-    for ($i = $amount; $i > 0; $i--) {
-        array_push($arr, randomHeroName());
-    }
-
-    return $amount;
-}
-
-function randomHeroName()
+function randomHeroName($i)
 {
     $hero_firstnames = ["captain", "doctor", "iron", "Hank", "ant", "Wasp", "the", "Hawk", "Spider", "Black", "Carol"];
-    $hero_lastnames = ["America", "Strange", "man", "Pym", "girl", "hulk", "eye", "widow", "panther", "daredevil", "marvel"]
+    $hero_lastnames = ["America", "Strange", "man", "Pym", "girl", "hulk", "eye", "widow", "panther", "daredevil", "marvel"];
     $heroes = [$hero_firstnames, $hero_lastnames];
-    $randname = $heroes[rand(0,count($heroes))][rand(0, 10)];
+    $randname = $heroes[$i][rand(0,10)];
 
-    echo $randname;
+    return $randname;
 }
-
 echo "Here is the name: " . combineNames();
 
+
+/*
 new_exercise(7);
 function copyright(int $year) {
     return "&copy; $year BeCode";
