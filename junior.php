@@ -120,41 +120,45 @@ echo copyright((int)date('Y'));
 ///
 new_exercise(8);
 function login(string $email, string $password) {
-    if($email == 'john@example.be' || $password == 'pocahontas') {
-        return 'Welcome John';
-        return ' Smith';
+    if($email == 'john@example.be' && $password == 'pocahontas') {
+        return 'Welcome John Smith';
+       
     }
     return 'No access';
 }
 /* do not change any code below */
 //should greet the user with his full name (John Smith)
-echo login('john@example.be', 'pocahontas');
+echo login('john@example.be', 'pocahontas')."<br>";
 //Should say: no access
-echo login('john@example.be', 'dfgidfgdfg');
+echo login('john@example.be', 'dfgidfgdfg')."<br>";
 //Should say: no access
-echo login('wrong@example', 'wrong');
+echo login('wrong@example', 'wrong')."<br>";
 /* You can change code again */
+// added breaks to look nicer.
+//changed operator or to and 
+//deleted one return ,placed smith in top return 
 
 new_exercise(9);
 function isLinkValid(string $link) {
     $unacceptables = array('https:','.doc','.pdf', '.jpg', '.jpeg', '.gif', '.bmp', '.png');
 
     foreach ($unacceptables as $unacceptable) {
-        if (strpos($link, $unacceptable) == true) {
+        if (strpos($link, $unacceptable) !== false) {
             return 'Unacceptable Found<br />';
         }
     }
     return 'Acceptable<br />';
 }
 //invalid link
-isLinkValid('http://www.google.com/hack.pdf');
+echo isLinkValid('http://www.google.com/hack.pdf');
 //invalid link
-isLinkValid('https://google.com');
+echo isLinkValid('https://google.com');
 //VALID link
-isLinkValid('http://google.com');
+echo isLinkValid('http://google.com');
 //VALID link
-isLinkValid('http://google.com/test.txt');
-
+echo isLinkValid('http://google.com/test.txt');
+//Fix : changing condition 
+//Using: Debug, some docs
 
 new_exercise(10);
 
